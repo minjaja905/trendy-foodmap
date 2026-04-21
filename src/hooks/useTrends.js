@@ -32,11 +32,7 @@ async function fetchGroup(foods, days, timeUnit) {
   }
   const res = await fetch('/api/trend', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Naver-Client-Id': CLIENT_ID,
-      'X-Naver-Client-Secret': CLIENT_SECRET,
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
   })
   if (!res.ok) throw new Error('trend fetch failed')

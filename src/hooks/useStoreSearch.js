@@ -5,12 +5,7 @@ const CLIENT_SECRET = import.meta.env.VITE_NAVER_CLIENT_SECRET
 
 async function fetchStores(foodQuery, neighborhood) {
   const query = encodeURIComponent(`${foodQuery} ${neighborhood}`.trim())
-  const res = await fetch(`/api/search?query=${query}&display=20&sort=random`, {
-    headers: {
-      'X-Naver-Client-Id': CLIENT_ID,
-      'X-Naver-Client-Secret': CLIENT_SECRET,
-    },
-  })
+  const res = await fetch(`/api/search?query=${query}&display=20&sort=random`)
   if (!res.ok) throw new Error('search failed')
   const data = await res.json()
   const decode = (str) => str
