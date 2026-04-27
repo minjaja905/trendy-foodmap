@@ -132,7 +132,7 @@ export default function App() {
           rel="noreferrer"
           style={{ color: 'var(--mint-dark)', textDecoration: 'none', fontWeight: 'bold' }}
         >
-          © 2026 @min_jaja_
+          © 2026 MJ
         </a>
         {/* 관리자 전용 시트 바로가기 - 아주 작고 희미하게 */}
         <a
