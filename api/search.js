@@ -1,5 +1,10 @@
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'https://trendy-foodmap.vercel.app'
+
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*')
+  const origin = req.headers.origin || ''
+  if (origin && origin !== ALLOWED_ORIGIN) return res.status(403).json({ error: 'Forbidden' })
+
+  res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN)
   if (req.method === 'OPTIONS') return res.status(200).end()
 
   const clientId = process.env.VITE_NAVER_CLIENT_ID

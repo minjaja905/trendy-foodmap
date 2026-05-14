@@ -1,7 +1,5 @@
 import { useState, useCallback } from 'react'
 
-const CLIENT_ID = import.meta.env.VITE_NAVER_CLIENT_ID
-const CLIENT_SECRET = import.meta.env.VITE_NAVER_CLIENT_SECRET
 
 async function fetchStores(foodQuery, neighborhood) {
   const query = encodeURIComponent(`${foodQuery} ${neighborhood}`.trim())
