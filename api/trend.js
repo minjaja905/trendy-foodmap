@@ -1,8 +1,12 @@
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'https://trendy-foodmap.vercel.app'
+const ALLOWED_ORIGINS = new Set([
+  process.env.ALLOWED_ORIGIN || 'https://trendy-foodmap.vercel.app',
+  'http://localhost:5173',
+  'http://localhost:4173',
+])
 
 export default async function handler(req, res) {
   const origin = req.headers.origin || ''
-  if (origin && origin !== ALLOWED_ORIGIN) return res.status(403).json({ error: 'Forbidden' })
+  if (!ALLOWED_ORIGINS.has(origin)) return res.status(403).json({ error: 'Forbidden' })
 
   res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN)
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
